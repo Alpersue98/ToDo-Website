@@ -21,11 +21,16 @@ function addTodoElement(text) {
   const newListItem = document.createElement("li");
   newListItem.textContent = text;
 
+  // Generiere einen eindeutigen Schlüssel für die Notizen
+  const noteKey = `note_${Math.random().toString(36).substr(2, 9)}`;
+
   // Listenelement löschen button
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("class", "deleteButton");
   deleteButton.addEventListener("click", function () {
     newListItem.remove();
+    notizenContainer.innerHTML = ""; // Notizblock löschen
+    delete notes[noteKey]; // Lösche die Notizen für dieses Element
     saveData({
       todos: Array.from(todoListContainer.children).map(
         (child) => child.textContent
@@ -39,33 +44,38 @@ function addTodoElement(text) {
 
   // Klickereignis zum Anzeigen der Notizen für das entsprechende Element
   newListItem.addEventListener("click", function () {
-    showNotes(text); // Notizen anzeigen
+    showNotes(noteKey); // Notizen anzeigen
   });
 
   todoListContainer.appendChild(newListItem);
 }
-
-// Funktion zum Anzeigen der Notizen für ein bestimmtes Element
+/// Funktion zum Anzeigen der Notizen für ein bestimmtes Element
 function showNotes(text) {
   const noteContent = notes[text] || ""; // Notizen abrufen oder leeren String verwenden
-  notizenContainer.innerHTML = ""; // Notizen-Bereich leeren
-  const noteInput = document.createElement("textarea");
-  noteInput.value = noteContent; // Notizen im Textfeld anzeigen
 
-  // Stil für das Textfeld setzen
-  noteInput.style.width = "75%"; // Vollständige Breite von .right-side
-  noteInput.style.height = "50vh"; // Vollständige Höhe von .right-side
-  noteInput.style.backgroundColor = "lightgrey"; // Hintergrundfarbe festlegen
-  noteInput.style.border = "1px solid #fff"; // Rahmen festlegen
-  noteInput.style.boxSizing = "border-box"; // Box-Sizing festlegen
-  noteInput.style.resize = "none"; // Textarea-Größenänderung deaktivieren
+  // Nur Notiz-Textfeld anzeigen, wenn mindestens ein To-Do-Element vorhanden ist
+  if (todoListContainer.children.length > 0) {
+    notizenContainer.innerHTML = ""; // Notizen-Bereich leeren
+    const noteInput = document.createElement("textarea");
+    noteInput.value = noteContent; // Notizen im Textfeld anzeigen
 
-  notizenContainer.appendChild(noteInput);
+    // Stil für das Textfeld setzen
+    noteInput.style.width = "75%"; // Vollständige Breite von .right-side
+    noteInput.style.height = "50vh"; // Vollständige Höhe von .right-side
+    noteInput.style.backgroundColor = "#fff4f4"; // Hintergrundfarbe festlegen
+    noteInput.style.border = "1px solid #fff"; // Rahmen festlegen
+    noteInput.style.boxSizing = "border-box"; // Box-Sizing festlegen
+    noteInput.style.resize = "none"; // Textarea-Größenänderung deaktivieren
 
-  // Änderungsereignis für das Notizen-Textfeld
-  noteInput.addEventListener("input", function () {
-    updateNotes(text, this.value); // Notizen für das ausgewählte Element aktualisieren
-  });
+    notizenContainer.appendChild(noteInput);
+
+    // Änderungsereignis für das Notizen-Textfeld
+    noteInput.addEventListener("input", function () {
+      updateNotes(text, this.value); // Notizen für das ausgewählte Element aktualisieren
+    });
+  } else {
+    notizenContainer.innerHTML = ""; // Notizen-Bereich leeren, wenn keine To-Do-Elemente vorhanden sind
+  }
 }
 
 // Funktion zum Erstellen der Notizen

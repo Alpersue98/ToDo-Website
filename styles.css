@@ -1,5 +1,5 @@
 body {
-  background: rgb(67, 65, 65);
+  background: rgb(153, 127, 152);
 }
 
 .container {
@@ -26,7 +26,7 @@ body {
 .deleteButton {
   background-image: url("assets/delete.png");
   background-size: cover;
-  background-color: lightblue;
+  background-color: rgb(255, 255, 255);
   background-repeat: no-repeat;
   width: 25px;
   height: 25px;
@@ -39,6 +39,7 @@ body {
 
 .textfield {
   width: 20rem;
+  font-size: 20px;
 }
 
 #todo-list {
@@ -52,12 +53,13 @@ body {
   margin: 5px; /* Außenabstand hinzufügen */
   border: 1px solid #fff;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
-  background-color: lightgrey; /* Hintergrundfarbe hinzufügen */
+  background-color: rgb(255, 255, 255); /* Hintergrundfarbe hinzufügen */
 }
 
 #todo-list li:hover {
-  background-color: rgb(169, 165, 165);
+  background-color: rgb(228, 228, 228);
 }
 
 #todo-list li span {
@@ -80,7 +82,7 @@ body {
 #createButton {
   background-image: url("assets/add-icon.png");
   background-size: cover;
-  background-color: lightblue;
+  background-color: rgb(154, 164, 181);
   background-repeat: no-repeat;
   width: 35px;
   height: 35px;
@@ -98,24 +100,26 @@ body {
 }
 
 .left-side {
-  background-color: lightblue;
+  background-color: rgb(154, 164, 181);
+  border: 0.1px solid #fff;
 }
 .right-side {
-  background-color: lightgreen;
+  background-color: rgb(159, 168, 183);
+  border: 0.1px solid #fff;
 }
 
 .left-side h2 {
   margin-top: 10px;
   font-size: 2.5em;
   text-align: center;
-  border: 0.5px solid #fff;
+  border-bottom: 0.5px solid #fff;
 }
 
 .right-side h2 {
   margin-top: 10px;
   font-size: 2.5em;
   text-align: center;
-  border: 0.5px solid #fff;
+  border-bottom: 0.5px solid #fff;
 }
 
 .notizen {
@@ -123,4 +127,19 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+.notizen textarea {
+  font-size: 25px; /* Beispielwert für die Schriftgröße */
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Media Query für die mobile Ansicht */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 80%; /* Ändern Sie die Breite für Bildschirme mit einer maximalen Breite von 768px */
+    height: 70vh; /* Ändern Sie die Höhe für Bildschirme mit einer maximalen Breite von 768px */
+  }
+  .textbox {
+    width: 100%; /* Ändern Sie die Breite für Bildschirme mit einer maximalen Breite von 768px */
+  }
 }
