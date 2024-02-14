@@ -1,0 +1,126 @@
+body {
+  background: rgb(67, 65, 65);
+}
+
+.container {
+  position: absolute; /* Positioniert den Container relativ zum nächsten positionierten Elternelement */
+  top: 50%; /* Platziert den Container 50% vom oberen Rand des Elternelements */
+  left: 50%; /* Platziert den Container 50% vom linken Rand des Elternelements */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Zentriert den Container relativ zu seiner Größe */
+  width: 70%; /* Breite des Containers */
+  height: 70vh; /* Höhe des Containers */
+  display: flex; /* Verwendet Flexbox */
+  border: 10px solid #fff;
+  border-radius: 20px;
+}
+
+.textbox {
+  margin-top: 100px;
+  width: 40%;
+  font-size: 24px;
+}
+
+.deleteButton {
+  background-image: url("assets/delete.png");
+  background-size: cover;
+  background-color: lightblue;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  margin-left: 20vh;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle; /* Damit das Bild vertikal zentriert wird */
+  background-position: center; /* Zentriert das Hintergrundbild horizontal */
+}
+
+.textfield {
+  width: 20rem;
+}
+
+#todo-list {
+  margin-top: 6em;
+}
+
+#todo-list li {
+  display: flex; /* Verwendet Flexbox */
+  align-items: center; /* Zentriert den Text vertikal */
+  padding: 5px; /* Innenabstand hinzufügen */
+  margin: 5px; /* Außenabstand hinzufügen */
+  border: 1px solid #fff;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: lightgrey; /* Hintergrundfarbe hinzufügen */
+}
+
+#todo-list li:hover {
+  background-color: rgb(169, 165, 165);
+}
+
+#todo-list li span {
+  flex: 1; /* Flexibles Layout für den Text */
+  white-space: nowrap; /* Verhindert das Umbruch des Textes */
+}
+
+#todo-list li button {
+  width: 25px; /* Breite des Löschbuttons */
+  height: 25px; /* Höhe des Löschbuttons */
+  margin-left: auto; /* Platziert den Löschbutton ganz rechts */
+}
+
+.create-todo {
+  display: flex; /* Verwendet Flexbox */
+  justify-content: center;
+  align-items: center; /* Zentriert die Elemente vertikal */
+}
+
+#createButton {
+  background-image: url("assets/add-icon.png");
+  background-size: cover;
+  background-color: lightblue;
+  background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+
+  border: none;
+  cursor: pointer;
+}
+
+.left-side,
+.right-side {
+  flex: 1;
+  padding: 1px;
+  overflow-y: auto;
+}
+
+.left-side {
+  background-color: lightblue;
+}
+.right-side {
+  background-color: lightgreen;
+}
+
+.left-side h2 {
+  margin-top: 10px;
+  font-size: 2.5em;
+  text-align: center;
+  border: 0.5px solid #fff;
+}
+
+.right-side h2 {
+  margin-top: 10px;
+  font-size: 2.5em;
+  text-align: center;
+  border: 0.5px solid #fff;
+}
+
+.notizen {
+  margin-top: 5em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
